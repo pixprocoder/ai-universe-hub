@@ -66,24 +66,38 @@ const displayTool = (tool) => {
   <div class="flex-1 border p-4 rounded">
     <h1 class="text-lg">${data.description}</h1>
     <div class="grid grid-cols-3 gap-4">
-    <div class="bg-gray-600 p-4 rounded-md">
-    <h1>Free of cost</h1>
+      <div class="bg-gray-600 p-4 rounded-md">
+      <h1>Free of cost</h1>
+      </div>
+      <div class="bg-gray-600 p-4 rounded-md">
+      <h1>Free of cost</h1>
+      </div>
+      <div class="bg-gray-600 p-4 rounded-md">
+      <h1>Free of cost</h1>
+      </div>
     </div>
-    <div class="bg-gray-600 p-4 rounded-md">
-    <h1>Free of cost</h1>
-    </div>
-    <div class="bg-gray-600 p-4 rounded-md">
-    <h1>Free of cost</h1>
-    </div>
+    <div class="grid grid-cols-2">
+      <div>
+        <h1>Features</h1>
+        <ul>
+            <li>${data.integrations[0]}</li>
+            <li>${data.integrations[1]}</li>
+            <li>${data.integrations[2]}</li>
+        </ul>
+      </div>
+      <div>
+        <h1>integrations</h1>
+      </div>
     </div>
    </div>
 
       <div class="flex-1">
+      <img src="${data.image_link}" />
         <h1>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-          asperiores nemo libero error. Quis enim voluptatem, molestiae
-          nulla necessitatibus, ipsam illum porro voluptatibus
-          voluptatum deserunt tempore. Sint laboriosam dolores harum?
+          ${data.input_output_examples[0].input}
+        </h1>
+        <h1>
+          ${data.input_output_examples[0].output}
         </h1>
       </div>
   `;
