@@ -41,13 +41,21 @@ const displayData = (tools) => {
         <p class="my-2">${tool.published_in}</p>
         </div>
        <div>
-       <label for="my-modal-3" class="btn px-3 py-1 text-lg text-white font-bold bg-orange-400 rounded-md">Details</label>
+       <label onclick="loadTool('${tool.id}')" for="my-modal-3" class="btn px-3 py-1 text-lg ">Details</label>
        </div>
     </div>
     `;
-    // console.log(tool);
+    // console.log(tool.id);
     cardContainer.appendChild(cardDiv);
   });
+};
+
+const loadTool = async (id) => {
+  console.log(id);
+  const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data);
 };
 
 loadAllData();
