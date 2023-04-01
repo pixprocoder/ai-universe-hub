@@ -14,12 +14,17 @@
   </head>
   <body>
     <header>
-      <h1 class="text-center text-4xl">AI Universe Hub</h1>
+      <h1 class="text-center text-5xl text-white font-bold my-6">
+        AI Universe Hub
+      </h1>
     </header>
     <!-- Main section start -->
     <main class="container mx-auto">
       <section>
-        <div id="card-container" class="grid grid-cols-3 gap-6"></div>
+        <div
+          id="card-container"
+          class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6"
+        ></div>
         <div>
           <button
             id="show-all-btn"
@@ -35,7 +40,7 @@
         <input type="checkbox" id="detail-modal" class="modal-toggle" />
         <div class="modal">
           <div
-            class="flex justify-center items-center bg-gray-700 w-3/4 h-3/4 relative p-10 rounded-lg"
+            class="flex justify-center items-center bg-gray-700 lg:overflow-hidden overflow-y-scroll overflow-x-scroll w-3/4 h-3/4 relative p-2 lg:p-10 rounded-lg"
           >
             <label
               for="detail-modal"
@@ -44,7 +49,7 @@
             >
             <div
               id="modal-container"
-              class="flex gap-4 justify-center items-end"
+              class="flex flex-col lg:flex-row gap-4 justify-center items-end"
             ></div>
           </div>
         </div>

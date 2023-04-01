@@ -6,14 +6,14 @@ const loadAllData = async () => {
 };
 
 const displayData = (tools) => {
-  const showAll = document.getElementById("show-all-btn");
+  // const showAll = document.getElementById("show-all-btn");
 
-  if (tools.length >= 6) {
-    tools = tools.slice(0, 6);
-    showAll.classList.remove("hidden");
-  } else {
-    // showAll.classList.add("block");
-  }
+  // if (tools.length >= 6) {
+  //   tools = tools.slice(0, 6);
+  //   showAll.classList.remove("hidden");
+  // } else {
+  //   showAll.classList.add("block");
+  // }
 
   tools.forEach((tool) => {
     const cardContainer = document.getElementById("card-container");
@@ -64,32 +64,32 @@ const displayTool = (tool) => {
   const parentDiv = document.getElementById("modal-container");
   parentDiv.innerHTML = `
   <div class="flex-1  p-4 ">
-    <h1 class="text-2xl">${data.description}</h1>
+    <h1 class="text-2xl text-white">${data.description}</h1>
     <div class="grid grid-cols-3 gap-4 my-4">
-      <div class="bg-gray-600 p-4 rounded-md">
+      <div class="bg-gray-600 text-green-300 p-4 rounded-md">
       <h1>${data.pricing["0"].plan}</h1>
       <h1>${data.pricing["0"].price}</h1>
       </div>
-      <div class="bg-gray-600 p-4 rounded-md">
+      <div class="bg-gray-600 text-yellow-300 p-4 rounded-md">
       <h1>${data.pricing["0"].plan}</h1>
       <h1>${data.pricing["0"].price}</h1>
       </div>
-      <div class="bg-gray-600 p-4 rounded-md">
+      <div class="bg-gray-600 text-blue-400 p-4 rounded-md">
       <h1>${data.pricing["0"].plan}</h1>
       <h1>${data.pricing["0"].price}</h1>
       </div>
     </div>
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-2 text-white">
       <div>
-        <h1 class="text-2xl font-bold mt-2 text-white">Features</h1>
-        <ul class="list-disc list-inside">
+        <h1 class="text-2xl font-bold mt-2 ">Features</h1>
+        <ul class="list-disc list-inside ">
         <li>${data.features["1"].feature_name}</li>
         <li>${data.features["2"].feature_name}</li>
         <li>${data.features["3"].feature_name}</li>
         </ul>
       </div>
       <div>
-        <h1 class="text-2xl font-bold mt-2 text-white">integrations</h1>
+        <h1 class="text-2xl font-bold mt-2 ">integrations</h1>
         <ul class="list-disc list-inside">
             <li>${data.integrations[0]}</li>
             <li>${data.integrations[1]}</li>
@@ -100,11 +100,11 @@ const displayTool = (tool) => {
    </div>
 
       <div class="flex-1">
-      <img src="${data.image_link[0]}" />
-        <h1 class="text-xl text-center my-2">
+      <img class="rounded-lg" src="${data.image_link[0]}" />
+        <h1 class="text-xl text-center text-white my-2">
           ${data.input_output_examples[0].input}
         </h1>
-        <h1 class="text-center my-2">
+        <h1 class="text-center text-white  my-2">
           ${data.input_output_examples[0].output}
         </h1>
       </div>
