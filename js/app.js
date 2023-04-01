@@ -60,12 +60,12 @@ const loadTool = async (id) => {
 
 const displayTool = (tool) => {
   const { data } = tool;
-  console.log(data);
+  // console.log();
   const parentDiv = document.getElementById("modal-container");
   parentDiv.innerHTML = `
-  <div class="flex-1 border p-4 rounded">
-    <h1 class="text-lg">${data.description}</h1>
-    <div class="grid grid-cols-3 gap-4">
+  <div class="flex-1  p-4 ">
+    <h1 class="text-2xl">${data.description}</h1>
+    <div class="grid grid-cols-3 gap-4 my-4">
       <div class="bg-gray-600 p-4 rounded-md">
       <h1>Free of cost</h1>
       </div>
@@ -78,15 +78,20 @@ const displayTool = (tool) => {
     </div>
     <div class="grid grid-cols-2">
       <div>
-        <h1>Features</h1>
-        <ul>
+        <h1 class="text-2xl font-bold mt-2 text-white">Features</h1>
+        <ul class="list-disc list-inside">
+        <li>${data.features["1"].feature_name}</li>
+        <li>${data.features["2"].feature_name}</li>
+        <li>${data.features["3"].feature_name}</li>
+        </ul>
+      </div>
+      <div>
+        <h1 class="text-2xl font-bold mt-2 text-white">integrations</h1>
+        <ul class="list-disc list-inside">
             <li>${data.integrations[0]}</li>
             <li>${data.integrations[1]}</li>
             <li>${data.integrations[2]}</li>
         </ul>
-      </div>
-      <div>
-        <h1>integrations</h1>
       </div>
     </div>
    </div>
