@@ -26,9 +26,14 @@ const displayData = (tools) => {
         </ul>     
     </div>
     <hr class="my-4"/>
-    <div class="date">
+    <div class="date flex justify-between items-center">
+        <div>
         <h3 class="text-2xl font-bold">${tool.name}</h3>
         <p>${tool.published_in}</p>
+        </div>
+       <div>
+       <button class="px-3 py-1 text-lg text-white font-bold bg-orange-400 rounded-md">Details</button>
+       </div>
     </div>
     `;
     console.log(tool);
