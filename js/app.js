@@ -60,20 +60,23 @@ const loadTool = async (id) => {
 
 const displayTool = (tool) => {
   const { data } = tool;
-  // console.log();
+  console.log(data);
   const parentDiv = document.getElementById("modal-container");
   parentDiv.innerHTML = `
   <div class="flex-1  p-4 ">
     <h1 class="text-2xl">${data.description}</h1>
     <div class="grid grid-cols-3 gap-4 my-4">
       <div class="bg-gray-600 p-4 rounded-md">
-      <h1>Free of cost</h1>
+      <h1>${data.pricing["0"].plan}</h1>
+      <h1>${data.pricing["0"].price}</h1>
       </div>
       <div class="bg-gray-600 p-4 rounded-md">
-      <h1>Free of cost</h1>
+      <h1>${data.pricing["0"].plan}</h1>
+      <h1>${data.pricing["0"].price}</h1>
       </div>
       <div class="bg-gray-600 p-4 rounded-md">
-      <h1>Free of cost</h1>
+      <h1>${data.pricing["0"].plan}</h1>
+      <h1>${data.pricing["0"].price}</h1>
       </div>
     </div>
     <div class="grid grid-cols-2">
@@ -97,15 +100,16 @@ const displayTool = (tool) => {
    </div>
 
       <div class="flex-1">
-      <img src="${data.image_link}" />
-        <h1>
+      <img src="${data.image_link[0]}" />
+        <h1 class="text-xl text-center my-2">
           ${data.input_output_examples[0].input}
         </h1>
-        <h1>
+        <h1 class="text-center my-2">
           ${data.input_output_examples[0].output}
         </h1>
       </div>
   `;
+  console.log(data.pricing);
 };
 
 loadAllData();
