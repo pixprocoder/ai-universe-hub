@@ -18,7 +18,7 @@ const displayData = (tools) => {
         alt=""
     />
     <div class="feature-container">
-        <h3 class="text-2xl font-bold">Feature</h3> 
+        <h3 class="text-2xl font-bold my-2">Feature</h3> 
         <ul>
         <li>${tool.features[0]}</li>
         <li>${tool.features[1]}</li>
@@ -29,7 +29,7 @@ const displayData = (tools) => {
     <div class="date flex justify-between items-center">
         <div>
         <h3 class="text-2xl font-bold">${tool.name}</h3>
-        <p>${tool.published_in}</p>
+        <p class="my-2">${tool.published_in}</p>
         </div>
        <div>
        <button class="px-3 py-1 text-lg text-white font-bold bg-orange-400 rounded-md">Details</button>
