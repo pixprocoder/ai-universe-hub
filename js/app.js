@@ -41,7 +41,7 @@ const displayData = (tools) => {
         <p class="my-2">${tool.published_in}</p>
         </div>
        <div>
-       <label onclick="loadTool('${tool.id}')" for="my-modal-3" class="btn px-3 py-1 text-lg ">Details</label>
+       <label onclick="loadTool('${tool.id}')" for="detail-modal" class="btn px-3 py-1 text-lg ">Details</label>
        </div>
     </div>
     `;
@@ -55,7 +55,38 @@ const loadTool = async (id) => {
   const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
   const res = await fetch(url);
   const data = await res.json();
+  displayTool(data);
+};
+
+const displayTool = (tool) => {
+  const { data } = tool;
   console.log(data);
+  const parentDiv = document.getElementById("modal-container");
+  parentDiv.innerHTML = `
+  <div class="flex-1 border p-4 rounded">
+    <h1 class="text-lg">${data.description}</h1>
+    <div class="grid grid-cols-3 gap-4">
+    <div class="bg-gray-600 p-4 rounded-md">
+    <h1>Free of cost</h1>
+    </div>
+    <div class="bg-gray-600 p-4 rounded-md">
+    <h1>Free of cost</h1>
+    </div>
+    <div class="bg-gray-600 p-4 rounded-md">
+    <h1>Free of cost</h1>
+    </div>
+    </div>
+   </div>
+
+      <div class="flex-1">
+        <h1>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+          asperiores nemo libero error. Quis enim voluptatem, molestiae
+          nulla necessitatibus, ipsam illum porro voluptatibus
+          voluptatum deserunt tempore. Sint laboriosam dolores harum?
+        </h1>
+      </div>
+  `;
 };
 
 loadAllData();
