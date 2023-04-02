@@ -1,25 +1,40 @@
 const loadAllData = async () => {
-  const url = `https://openapi.programming-hero.com/api/ai/tools`;
-  const res = await fetch(url);
-  const data = await res.json();
+  try {
+    const url = `https://openapi.programming-hero.com/api/ai/tools`;
+    const res = await fetch(url);
+    const data = await res.json();
 
-  // sorting by date
-  let date = [];
-  data.data.tools.map((tool) => {
-    const dates = tool.published_in;
-    date.push(dates);
-  });
-  date.sort((a, b) => {
-    const date1 = new Date(a);
-    const date2 = new Date(b);
-    return date1 - date2;
-  });
-  const sortedToolsData = data.data.tools.sort((a, b) => {
-    const index1 = date.indexOf(a.published_in);
-    const index2 = date.indexOf(b.published_in);
-    return index1 - index2;
-  });
-  displayData(sortedToolsData);
+    // sorting by date
+    let date = [];
+    data.data.tools.map((tool) => {
+      const dates = tool.published_in;
+      date.push(dates);
+    });
+    date.sort((a, b) => {
+      const date1 = new Date(a);
+      const date2 = new Date(b);
+      return date1 - date2;
+    });
+    const sortedToolsData = data.data.tools.sort((a, b) => {
+      const index1 = date.indexOf(a.published_in);
+      const index2 = date.indexOf(b.published_in);
+      return index1 - index2;
+    });
+
+    // Load and display the first 6 items
+    const firstSixToolsData = sortedToolsData.slice(0, 6);
+    displayData(firstSixToolsData);
+
+    // Load and display the rest of the items
+    const showAllBtn = document.getElementById("show-all-btn");
+    showAllBtn.addEventListener("click", () => {
+      const remainingToolsData = sortedToolsData.slice(6);
+      displayData(remainingToolsData);
+      showAllBtn.style.display = "none";
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 // Display All Data
