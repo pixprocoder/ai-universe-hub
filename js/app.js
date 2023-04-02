@@ -1,33 +1,29 @@
 const loadAllData = async () => {
-  const url = "https://openapi.programming-hero.com/api/ai/tools";
+  const url = `https://openapi.programming-hero.com/api/ai/tools`;
   const res = await fetch(url);
   const data = await res.json();
-  displayData(data.data.tools);
+
+  let date = [];
+  data.data.tools.map((tool) => {
+    const dates = tool.published_in;
+    date.push(dates);
+  });
+  date.sort((a, b) => {
+    const date1 = new Date(a);
+    const date2 = new Date(b);
+    return date1 - date2;
+  });
+  const sortedToolsData = data.data.tools.sort((a, b) => {
+    const index1 = date.indexOf(a.published_in);
+    const index2 = date.indexOf(b.published_in);
+    return index1 - index2;
+  });
+  displayData(sortedToolsData);
 };
 
 const displayData = (tools) => {
   // const showAll = document.getElementById("show-all-btn");
-  // Date operations
-  let date = [];
-  tools.map((tool) => {
-    const dates = tool.published_in;
-    const newDate = new Date(dates);
-    const day = newDate.getDate();
-    const month = newDate.getMonth();
-    const year = newDate.getFullYear();
-    const formattedDate = `${day}/${month}/${year}`;
-    date.push(formattedDate);
-  });
 
-  const sortedDates = date.sort((a, b) => {
-    console.log(a, b);
-    const date1 = new Date(a);
-    const date2 = new Date(b);
-    return date2 - date1;
-  });
-  console.log(sortedDates);
-
-  // console.log(sortedDates);
   // if (tools.length >= 6) {
   //   tools = tools.slice(0, 6);
   //   showAll.classList.remove("hidden");
