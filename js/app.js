@@ -8,19 +8,26 @@ const loadAllData = async () => {
 const displayData = (tools) => {
   // const showAll = document.getElementById("show-all-btn");
   // Date operations
-  let arr = [];
+  let date = [];
   tools.map((tool) => {
-    console.log(tool.published_in);
     const dates = tool.published_in;
     const newDate = new Date(dates);
     const day = newDate.getDate();
     const month = newDate.getMonth();
     const year = newDate.getFullYear();
     const formattedDate = `${day}/${month}/${year}`;
-    arr.push(formattedDate);
+    date.push(formattedDate);
   });
-  console.log(arr);
 
+  const sortedDates = date.sort((a, b) => {
+    console.log(a, b);
+    const date1 = new Date(a);
+    const date2 = new Date(b);
+    return date2 - date1;
+  });
+  console.log(sortedDates);
+
+  // console.log(sortedDates);
   // if (tools.length >= 6) {
   //   tools = tools.slice(0, 6);
   //   showAll.classList.remove("hidden");
