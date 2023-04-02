@@ -7,6 +7,19 @@ const loadAllData = async () => {
 
 const displayData = (tools) => {
   // const showAll = document.getElementById("show-all-btn");
+  // Date operations
+  let arr = [];
+  tools.map((tool) => {
+    console.log(tool.published_in);
+    const dates = tool.published_in;
+    const newDate = new Date(dates);
+    const day = newDate.getDate();
+    const month = newDate.getMonth();
+    const year = newDate.getFullYear();
+    const formattedDate = `${day}/${month}/${year}`;
+    arr.push(formattedDate);
+  });
+  console.log(arr);
 
   // if (tools.length >= 6) {
   //   tools = tools.slice(0, 6);
@@ -16,20 +29,6 @@ const displayData = (tools) => {
   // }
 
   tools.forEach((tool) => {
-    // Date operations
-    const dates = tool.published_in;
-    const newDate = new Date(dates);
-    const day = newDate.getDate();
-    const month = newDate.getMonth();
-    const year = newDate.getFullYear();
-    const formattedDate = `${day}/${month}/${year}`;
-    console.log(formattedDate);
-    // console.log(month);
-
-    // console.log(dates);
-    // const newDate = dates.split(",");
-    // console.log(newDate);
-
     const cardContainer = document.getElementById("card-container");
     const cardDiv = document.createElement("div");
     const classList = ["border", "rounded", "p-6"];
