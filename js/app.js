@@ -3,6 +3,7 @@ const loadAllData = async () => {
   const res = await fetch(url);
   const data = await res.json();
 
+  // sorting by date
   let date = [];
   data.data.tools.map((tool) => {
     const dates = tool.published_in;
@@ -21,16 +22,8 @@ const loadAllData = async () => {
   displayData(sortedToolsData);
 };
 
+// Display All Data
 const displayData = (tools) => {
-  // const showAll = document.getElementById("show-all-btn");
-
-  // if (tools.length >= 6) {
-  //   tools = tools.slice(0, 6);
-  //   showAll.classList.remove("hidden");
-  // } else {
-  //   showAll.classList.add("block");
-  // }
-
   tools.forEach((tool) => {
     const cardContainer = document.getElementById("card-container");
     const cardDiv = document.createElement("div");
@@ -61,11 +54,11 @@ const displayData = (tools) => {
        </div>
     </div>
     `;
-    // console.log(tool.id);
     cardContainer.appendChild(cardDiv);
   });
 };
 
+// Load single Data
 const loadTool = async (id) => {
   console.log(id);
   const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
@@ -74,6 +67,7 @@ const loadTool = async (id) => {
   displayTool(data);
 };
 
+// Display Single Data
 const displayTool = (tool) => {
   const { data } = tool;
   const parentDiv = document.getElementById("modal-container");
@@ -104,12 +98,15 @@ const displayTool = (tool) => {
   const integrationUlContainer = document.getElementById("integration-ul");
   integrationUlContainer.innerText = "";
 
+  // Features
   const values = Object.values(data.features);
   values.forEach((e) => {
     const featureLi = document.createElement("li");
     featureLi.innerText = `${e.feature_name}`;
     featureUlContainer.appendChild(featureLi);
   });
+
+  // Integrations
   const { integrations } = data;
   integrations.forEach((e) => {
     const integrationLi = document.createElement("li");
