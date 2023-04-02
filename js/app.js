@@ -62,14 +62,14 @@ const displayTool = (tool) => {
   const { data } = tool;
   const parentDiv = document.getElementById("modal-container");
   const modalLeftContainer = document.getElementById("modal-left-container");
-  const pricingDiv = document.getElementById("modal-price-container");
-  pricingDiv.innerHTML = "";
 
   // Description
   const desc = document.getElementById("modal-description");
   desc.innerText = `${data.description}`;
 
-  // pricing and plan
+  // Pricing And Plan
+  const pricingDiv = document.getElementById("modal-price-container");
+  pricingDiv.innerHTML = "";
   const { pricing } = data;
   pricing.forEach((e) => {
     const div = document.createElement("div");
@@ -82,7 +82,7 @@ const displayTool = (tool) => {
     pricingDiv.appendChild(div);
   });
 
-  // feature and integration
+  // Features and Integrations
   const featureUlContainer = document.getElementById("feature-ul");
   featureUlContainer.innerText = "";
   const integrationUlContainer = document.getElementById("integration-ul");
@@ -91,17 +91,27 @@ const displayTool = (tool) => {
   const values = Object.values(data.features);
   values.forEach((e) => {
     const featureLi = document.createElement("li");
-
     featureLi.innerText = `${e.feature_name}`;
     featureUlContainer.appendChild(featureLi);
   });
-
   const { integrations } = data;
   integrations.forEach((e) => {
     const integrationLi = document.createElement("li");
     integrationLi.innerText = `${e}`;
     integrationUlContainer.appendChild(integrationLi);
   });
+
+  //modal-right-container
+  const modalRightContainer = document.getElementById("modal-right-container");
+  const image = document.getElementById("modal-img");
+  const input = document.getElementById("modal-input");
+  const output = document.getElementById("modal-output");
+  image.src = `${data.image_link[0]}`;
+  input.innerText = `${data.input_output_examples[0].input}`;
+  output.innerText = `${data.input_output_examples[0].output}`;
+  modalRightContainer.appendChild(image);
+  modalRightContainer.appendChild(input);
+  modalRightContainer.appendChild(output);
 };
 
 loadAllData();
