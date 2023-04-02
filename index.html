@@ -40,7 +40,7 @@
         <input type="checkbox" id="detail-modal" class="modal-toggle" />
         <div class="modal">
           <div
-            class="flex justify-center items-center bg-gray-700 lg:overflow-hidden overflow-y-scroll overflow-x-scroll w-3/4 h-3/4 relative p-2 lg:p-10 rounded-lg"
+            class="flex justify-between items-center bg-gray-700 lg:overflow-hidden overflow-y-scroll overflow-x-scroll w-3/4 h-3/4 relative p-2 lg:p-10 rounded-lg"
           >
             <label
               for="detail-modal"
@@ -49,8 +49,44 @@
             >
             <div
               id="modal-container"
-              class="flex flex-col lg:flex-row gap-4 justify-center items-end"
-            ></div>
+              class="flex flex-col lg:flex-row gap-4 justify-between items-center"
+            >
+              <!-- modal content -->
+              <div id="modal-left-container" class="flex-1 p-4">
+                <h1 id="modal-description" class="text-2xl text-white"></h1>
+                <!-- pricing div  -->
+                <div
+                  id="modal-price-container"
+                  class="grid grid-cols-3 gap-4 my-4"
+                ></div>
+
+                <!-- Features and integrations  -->
+                <div class="grid grid-cols-2 text-white">
+                  <div id="features-modal-container">
+                    <h1 class="text-2xl font-bold mt-2">Features</h1>
+                    <ul id="feature-ul" class="list-disc list-inside"></ul>
+                  </div>
+                  <div id="integrations-modal-container">
+                    <h1 class="text-2xl font-bold mt-2">integrations</h1>
+                    <ul id="integration-ul" class="list-disc list-inside"></ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- modal right section  -->
+              <div id="modal-right-container" class="flex-1">
+                <img id="modal-img" class="rounded-lg" src="" />
+                <h1
+                  id="modal-input"
+                  class="text-xl text-center text-white my-2"
+                >
+                  input
+                </h1>
+                <p id="modal-output" class="text-center text-white my-2">
+                  output
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

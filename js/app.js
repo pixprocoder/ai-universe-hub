@@ -60,56 +60,48 @@ const loadTool = async (id) => {
 
 const displayTool = (tool) => {
   const { data } = tool;
-  console.log(data);
   const parentDiv = document.getElementById("modal-container");
-  parentDiv.innerHTML = `
-  <div class="flex-1  p-4 ">
-    <h1 class="text-2xl text-white">${data.description}</h1>
-    <div class="grid grid-cols-3 gap-4 my-4">
-      <div class="bg-gray-600 text-green-300 p-4 rounded-md">
-      <h1>${data.pricing["0"].plan}</h1>
-      <h1>${data.pricing["0"].price}</h1>
-      </div>
-      <div class="bg-gray-600 text-yellow-300 p-4 rounded-md">
-      <h1>${data.pricing["0"].plan}</h1>
-      <h1>${data.pricing["0"].price}</h1>
-      </div>
-      <div class="bg-gray-600 text-blue-400 p-4 rounded-md">
-      <h1>${data.pricing["0"].plan}</h1>
-      <h1>${data.pricing["0"].price}</h1>
-      </div>
-    </div>
-    <div class="grid grid-cols-2 text-white">
-      <div>
-        <h1 class="text-2xl font-bold mt-2 ">Features</h1>
-        <ul class="list-disc list-inside ">
-        <li>${data.features["1"].feature_name}</li>
-        <li>${data.features["2"].feature_name}</li>
-        <li>${data.features["3"].feature_name}</li>
-        </ul>
-      </div>
-      <div>
-        <h1 class="text-2xl font-bold mt-2 ">integrations</h1>
-        <ul class="list-disc list-inside">
-            <li>${data.integrations[0]}</li>
-            <li>${data.integrations[1]}</li>
-            <li>${data.integrations[2]}</li>
-        </ul>
-      </div>
-    </div>
-   </div>
+  const modalLeftContainer = document.getElementById("modal-left-container");
+  const pricingDiv = document.getElementById("modal-price-container");
+  pricingDiv.innerHTML = "";
 
-      <div class="flex-1">
-      <img class="rounded-lg" src="${data.image_link[0]}" />
-        <h1 class="text-xl text-center text-white my-2">
-          ${data.input_output_examples[0].input}
-        </h1>
-        <h1 class="text-center text-white  my-2">
-          ${data.input_output_examples[0].output}
-        </h1>
-      </div>
-  `;
-  console.log(data.pricing);
+  // Description
+  const desc = document.getElementById("modal-description");
+  desc.innerText = `${data.description}`;
+
+  // pricing and plan
+  const { pricing } = data;
+  pricing.forEach((e) => {
+    const div = document.createElement("div");
+    const classList = ["rounded-md", "p-4", "bg-gray-600", "text-green-300"];
+    div.classList.add(...classList);
+    div.innerHTML = `
+       <h1>${e.plan}</h1>
+       <h1>${e.price}</h1>
+     `;
+    pricingDiv.appendChild(div);
+  });
+
+  // feature and integration
+  const featureUlContainer = document.getElementById("feature-ul");
+  featureUlContainer.innerText = "";
+  const integrationUlContainer = document.getElementById("integration-ul");
+  integrationUlContainer.innerText = "";
+
+  const values = Object.values(data.features);
+  values.forEach((e) => {
+    const featureLi = document.createElement("li");
+
+    featureLi.innerText = `${e.feature_name}`;
+    featureUlContainer.appendChild(featureLi);
+  });
+
+  const { integrations } = data;
+  integrations.forEach((e) => {
+    const integrationLi = document.createElement("li");
+    integrationLi.innerText = `${e}`;
+    integrationUlContainer.appendChild(integrationLi);
+  });
 };
 
 loadAllData();
